@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/styles.css">
+    <title>NPC Generator</title>
+</head>
+<body>
+
+    <h1>Velegyr's Character Generator</h1>
+    <p>Need a quick character for an NPC, oneshot, or new player? Fill in the info below
+        and generate your new character, complete with stats and skills, in under a minute!
+    </p>
+
+    <label for="male">Male</label>
+    <input type="radio" name="gender" value="male">
+    <label for="female">Female</label>
+    <input type="radio" name="gender" value="female">
+
+    <br>
+
+    <label for="race">Race:</label>
+    <select name="race" id="race">
+        <option value= 0>Aarakocra</option>
+        <option value= 1>Dragonborn</option>
+        <option value= 2>Drow</option>
+        <option value= 3>Dwarf</option>
+        <option value= 4>Eldarin</option>
+        <option value= 5>Elf</option>
+        <option value= 6>Gnome</option>
+        <option value= 7>Half-Elf</option>
+        <option value= 8>Halfling</option>
+        <option value= 9>Human</option>
+        <option value= 10>Lizardfolk</option>
+        <option value= 11>Orc</option>
+        <option value= 12>Tabaxi</option>
+        <option value= 13>Tiefling</option>
+    </select>
+
+    <br>
+
+    <label for="charClass">Class:</label>
+    <select name="charClass" id="charClass">
+        <option value="0">Barbarian</option>
+        <option value="1">Bard</option>
+        <option value="2">Cleric</option>
+        <option value="3">Druid</option>
+        <option value="4">Fighter</option>
+        <option value="5">Monk</option>
+        <option value="6">Paladin</option>
+        <option value="7">Ranger</option>
+        <option value="8">Rogue</option>
+        <option value="9">Sorcerer</option>
+        <option value="10">Warlock</option>
+        <option value="11">Wizard</option>
+    </select>
+
+    <br>
+
+    <label for="charLevel">Level:</label>
+    <select name="charLevel" id="charLevel">
+        <option value="0">Level 0</option>
+        <option value="1">Level 1</option>
+        <option value="2">Level 2</option>
+        <option value="3">Level 3</option>
+        <option value="4">Level 4</option>
+        <option value="5">Level 5</option>
+        <option value="6">Level 6</option>
+        <option value="7">Level 7</option>
+        <option value="8">Level 8</option>
+        <option value="9">Level 9</option>
+        <option value="10">Level 10</option>
+        <option value="11">Level 11</option>
+        <option value="12">Level 12</option>
+        <option value="13">Level 13</option>
+        <option value="14">Level 14</option>
+        <option value="15">Level 15</option>
+        <option value="16">Level 16</option>
+        <option value="17">Level 17</option>
+        <option value="18">Level 18</option>
+        <option value="19">Level 19</option>
+        <option value="20">Level 20</option>
+    </select>
+    
+    <br>
+
+    <button id="btn-generate" onclick="genChar()">Generate</button>
+
+    <p id="givenName"></p>
+
+    <p id="givenClass"></p>
+
+    <p id="givenStrength"></p>
+    <p id="givenIntelligence"></p>
+    <p id="givenWisdom"></p>
+    <p id="givenDexterity"></p>
+    <p id="givenConstitution"></p>
+    <p id="givenCharisma"></p>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>
