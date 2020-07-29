@@ -380,6 +380,14 @@ function genChar() {
             };
         };
     };
+    var stat = [
+        str,
+        dex,
+        int,
+        wis,
+        cha,
+        con
+    ];
     var str;
     var dex;
     var int;
@@ -406,147 +414,182 @@ function genChar() {
 
     // Barbarian //
     if (charClass == 0) {
-        str = rolls[5];
-        con = rolls[4];
-        dex = rolls[3];
-        cha = rolls[2];
-        wis = rolls[1];
-        int = rolls[0];
+        stat[0] = rolls[5];
+        stat[5] = rolls[4];
+        stat[1] = rolls[3];
+        stat[4] = rolls[2];
+        stat[3] = rolls[1];
+        stat[2] = rolls[0];
 
 
         // Bard //
     } else if (charClass == 1) {
-        cha = rolls[5];
-        dex = rolls[4];
-        int = rolls[3];
-        wis = rolls[2];
-        con = rolls[1];
-        str = rolls[0];
+        stat[4] = rolls[5];
+        stat[1] = rolls[4];
+        stat[2] = rolls[3];
+        stat[3] = rolls[2];
+        stat[5] = rolls[1];
+        stat[0] = rolls[0];
 
         // Cleric //
     } else if (charClass == 2) {
-        wis = rolls[5];
-        cha = rolls[4];
-        int = rolls[3];
-        con = rolls[2];
-        dex = rolls[1];
-        str = rolls[0];
+        stat[3] = rolls[5];
+        stat[4] = rolls[4];
+        stat[2] = rolls[3];
+        stat[5] = rolls[2];
+        stat[1] = rolls[1];
+        stat[0] = rolls[0];
 
         // Druid //
     } else if (charClass == 3) {
-        wis = rolls[5];
-        int = rolls[4];
-        cha = rolls[3];
-        con = rolls[2];
-        dex = rolls[1];
-        str = rolls[0];
+        stat[3] = rolls[5];
+        stat[2] = rolls[4];
+        stat[4] = rolls[3];
+        stat[5] = rolls[2];
+        stat[1] = rolls[1];
+        stat[0] = rolls[0];
 
         // Fighter //
     } else if (charClass == 4) {
-        str = rolls[5];
-        dex = rolls[4];
-        con = rolls[3];
-        cha = rolls[2];
-        wis = rolls[1];
-        int = rolls[0];
+        stat[0] = rolls[5];
+        stat[1] = rolls[4];
+        stat[5] = rolls[3];
+        stat[4] = rolls[2];
+        stat[3] = rolls[1];
+        stat[2] = rolls[0];
 
         // Monk //
     } else if (charClass == 5) {
-        dex = rolls[5];
-        wis = rolls[4];
-        int = rolls[3];
-        cha = rolls[2];
-        str = rolls[1];
-        con = rolls[0];
+        stat[1] = rolls[5];
+        stat[3] = rolls[4];
+        stat[2] = rolls[3];
+        stat[4] = rolls[2];
+        stat[0] = rolls[1];
+        stat[5] = rolls[0];
 
         // Paladin //
     } else if (charClass == 6) {
-        str = rolls[5];
-        cha = rolls[4];
-        con = rolls[3];
-        dex = rolls[2];
-        wis = rolls[1];
-        int = rolls[0];
+        stat[0] = rolls[5];
+        stat[4] = rolls[4];
+        stat[5] = rolls[3];
+        stat[1] = rolls[2];
+        stat[3] = rolls[1];
+        stat[2] = rolls[0];
 
         // Ranger //
     } else if (charClass == 7) {
-        dex = rolls[5];
-        wis = rolls[4];
-        int = rolls[3];
-        cha = rolls[2];
-        con = rolls[1];
-        str = rolls[0];
+        stat[1] = rolls[5];
+        stat[3] = rolls[4];
+        stat[2] = rolls[3];
+        stat[4] = rolls[2];
+        stat[5] = rolls[1];
+        stat[0] = rolls[0];
 
         // Rogue //
     } else if (charClass == 8) {
-        dex = rolls[5];
-        int = rolls[4];
-        cha = rolls[3];
-        wis = rolls[2];
-        str = rolls[1];
-        con = rolls[0];
+        stat[1] = rolls[5];
+        stat[2] = rolls[4];
+        stat[4] = rolls[3];
+        stat[3] = rolls[2];
+        stat[0] = rolls[1];
+        stat[5] = rolls[0];
 
         // Sorcerer //
     } else if (charClass == 9) {
-        cha = rolls[5];
-        con = rolls[4];
-        int = rolls[3];
-        wis = rolls[2];
-        dex = rolls[1];
-        str = rolls[0];
+        stat[4] = rolls[5];
+        stat[5] = rolls[4];
+        stat[2] = rolls[3];
+        stat[3] = rolls[2];
+        stat[1] = rolls[1];
+        stat[0] = rolls[0];
 
         // Warlock //
     } else if (charClass == 10) {
-        cha = rolls[5];
-        wis = rolls[4];
-        int = rolls[3];
-        con = rolls[2];
-        dex = rolls[1];
-        str = rolls[0];
+        stat[4] = rolls[5];
+        stat[3] = rolls[4];
+        stat[2] = rolls[3];
+        stat[5] = rolls[2];
+        stat[1] = rolls[1];
+        stat[0] = rolls[0];
 
         // Wizard //
     } else {
-        int = rolls[5];
-        wis = rolls[4];
-        con = rolls[3];
-        cha = rolls[2];
-        dex = rolls[1];
-        str = rolls[0];
+        stat[2] = rolls[5];
+        stat[3] = rolls[4];
+        stat[5] = rolls[3];
+        stat[4] = rolls[2];
+        stat[1] = rolls[1];
+        stat[0] = rolls[0];
     };
 
     // Write final stat calculations to DOM
-    document.getElementById("givenStrength").innerText = "Strength: " + str;
-    document.getElementById("givenIntelligence").innerText = "Intelligence: " + int;
-    document.getElementById("givenWisdom").innerText = "Wisdom: " + wis;
-    document.getElementById("givenDexterity").innerText = "Dexterity: " + dex;
-    document.getElementById("givenConstitution").innerText = "Constitution: " + con;
-    document.getElementById("givenCharisma").innerText = "Charisma: " + cha;
-
-    
+    document.getElementById("givenStrength").innerText = "Strength: " + stat[0];
+    document.getElementById("givenDexterity").innerText = "Dexterity: " + stat[1];
+    document.getElementById("givenConstitution").innerText = "Constitution: " + stat[5];
+    document.getElementById("givenIntelligence").innerText = "Intelligence: " + stat[2];
+    document.getElementById("givenWisdom").innerText = "Wisdom: " + stat[3];
+    document.getElementById("givenCharisma").innerText = "Charisma: " + stat[4];
 
     // Skills //
     var skillMods = [
-        0, // 10-11
-        1, // 12-13
-        2, // 14-15
-        3, // 16-17
-        4, // 18-19
-        5 // 20-21
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
     ];
-
-    if (str == 10 || str == 11 ) {
-        str = skillMods[0];
-    } else if (str == 12 || str == 13) {
-        str = skillMods[1];
-    } else if (str == 14 || str == 15) {
-        str = skillMods[2];
-    } else if (str == 16 || str == 17) {
-        str = skillMods[3];
-    } else if (str == 18 || str == 19) {
-        str = skillMods[4];
-    } else {
-        str = skillMods[5];
+    for (i=0; i < stat.length; i++) {
+        if (stat[i] == 10 || stat[i] == 11) {
+            skillMods[i] = 0;
+        } else if (stat[i] == 12 || stat[i] == 13) {
+            skillMods[i] = 1;
+        } else if (stat[i] == 14 || stat[i] == 15) {
+            skillMods[i] = 2;
+        } else if (stat[i] == 16 || stat[i] == 17) {
+            skillMods[i] = 3;
+        } else if (stat[i] == 18 || stat[i] == 19) {
+            skillMods[i] = 4;
+        } else {
+            skillMods[i] = 5;
+        };
     };
-    console.log("Stat Mod: " + str);
-    
+    var givenAcrobatics = document.getElementById("givenAcrobatics");
+    var givenAnimalHandling = document.getElementById("givenAnimalHandling");
+    var givenArcana = document.getElementById("givenArcana");
+    var givenAthletics = document.getElementById("givenAthletics");
+    var givenDeception = document.getElementById("givenDeception");
+    var givenHistory = document.getElementById("givenHistory");
+    var givenInsight = document.getElementById("givenInsight");
+    var givenIntimidation = document.getElementById("givenIntimidation");
+    var givenInvestigation = document.getElementById("givenInvestigation");
+    var givenMedicine = document.getElementById("givenMedicine");
+    var givenNature = document.getElementById("givenNature");
+    var givenPerception = document.getElementById("givenPerception");
+    var givenPerformance = document.getElementById("givenPerformance");
+    var givenPersuasion = document.getElementById("givenPersuasion");
+    var givenReligion = document.getElementById("givenReligion");
+    var givenSleightOfHand = document.getElementById("givenSleightOfHand");
+    var givenStealth = document.getElementById("givenStealth");
+    var givenSurvival = document.getElementById("givenSurvival");
+
+    givenAcrobatics.innerHTML = "Acrobatics: +" + skillMods[1];
+    givenAnimalHandling.innerHTML = "Animal Handling: +" + skillMods[3];
+    givenArcana.innerHTML = "Arcana: +" + skillMods[2];
+    givenAthletics.innerHTML = "Athletics: +" + skillMods[0];
+    givenDeception.innerHTML = "Deception: +" + skillMods[5];
+    givenHistory.innerHTML = "History: +" + skillMods[2];
+    givenInsight.innerHTML = "Insight: +" + skillMods[3];
+    givenIntimidation.innerHTML = "Intimidation: +" + skillMods[5];
+    givenInvestigation.innerHTML = "Investigation: +" + skillMods[2];
+    givenMedicine.innerHTML = "Medicine: +" + skillMods[3];
+    givenNature.innerHTML = "Nature: +" + skillMods[2];
+    givenPerception.innerHTML = "Perception: +" + skillMods[3];
+    givenPerformance.innerHTML = "Performance: +" + skillMods[5];
+    givenPersuasion.innerHTML = "Persuasion: +" + skillMods[5];
+    givenReligion.innerHTML = "Religion: +" + skillMods[2];
+    givenSleightOfHand.innerHTML = "Sleight of Hand: +" + skillMods[1];
+    givenStealth.innerHTML = "Stealth: +" + skillMods[1];
+    givenSurvival.innerHTML = "Survival: +" + skillMods[3];
+
 };
