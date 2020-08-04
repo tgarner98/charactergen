@@ -1,1 +1,113 @@
-body {...}
+/* Color Palate:
+Main - #7C00FF;
+Secondary - #221F3B;
+Text - #EBEBEB;
+Background - #050505;
+*/
+body {
+    font-family: 'Ubuntu', sans-serif;
+    background-color: #050505;
+    color: #EBEBEB;
+}
+
+/* Header */
+
+nav.navbar.navbar-expand-lg {
+    padding: 0px;
+    margin-bottom: 5%;
+}
+
+.navbar-header {
+    font-family: 'Ubuntu', sans-serif;
+    background-color: #7C00FF;
+    color: #EBEBEB;
+    float: left;
+    text-align: center;
+    width: 100%;
+}
+
+hr {
+    border: 1px solid #EBEBEB;
+    width: 30%;
+}
+
+a.navbar-brand {
+    color: #EBEBEB;
+    font-size: 60px;
+}
+
+.navbar-header p {
+    font-size: 20px;
+}
+
+/* Content */
+
+
+
+.form-select {
+    display: inline-block;
+}
+
+select {
+    background: #7C00FF;
+    color: #EBEBEB;
+    border: 2px solid #221F3B;
+}
+
+#btn-generate {
+    background: #7C00FF;
+    color: #EBEBEB;
+    border: 2px solid #221F3B;
+    margin-top: 5%;
+    font-size: 30px;
+}
+
+h1 {
+    text-align: center;
+    margin-top: 5%;
+}
+
+#char-info {
+    margin-top: 5%;
+}
+
+#char-info p {
+    background-color: #7C00FF;
+}
+
+#char-skills {
+    margin-top: 1%;
+}
+
+#char-skills p {
+    background-color: #7C00FF;
+}
+/* Media Queries */
+
+@media (min-width: 300px) {
+    #radio-male {
+        text-align: center;
+    }
+
+    #radio-female {
+        text-align: center;
+    }
+}
+
+@media (min-width: 768px) {
+    ...
+}
+
+@media (min-width: 992px) {
+    ...
+}
+
+@media (min-width: 1200px) {
+    #radio-male {
+        text-align: right;
+    }
+
+    #radio-female {
+        text-align: left;
+    }
+}

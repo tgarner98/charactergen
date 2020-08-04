@@ -410,6 +410,9 @@ function genChar() {
 
     rolls.sort();
 
+    // Racial Bonuses //
+
+    
     // Distributes rolls array values to stat variables based on selected character class
 
     // Barbarian //
@@ -522,7 +525,49 @@ function genChar() {
         stat[0] = rolls[0];
     };
 
+    if (race = "0") { // Aarakocra Bonus: Dex
+        stat[1] += 2;
+    } else if (race = "1") { // Dragonborn Bonus: Str, Cha
+        stat[0] += 2;
+        stat[4] += 1;
+    } else if (race = "2") { // Drow Bonus: Cha
+        stat[4] += 1;
+    } else if (race="3") { // Dwarf Bonus: Con
+        stat[5] += 2;
+    } else if (race="4") { // Eldarin Bonus: Int
+        stat[2] += 1;
+    } else if (race="5") { // Elf Bonus: Dex
+        stat[1] += 2;
+    } else if (race="6") { // Gnome Bonus: Int
+        stat[2] += 2;
+    } else if (race="7") { // Half-Elf Bonus: Cha
+        stat[4] += 2;
+    } else if (race="8") { // Halfling Bonus: Dex
+        stat[1] += 2;
+    } else if (race="9") { // Human Bonus: Everything
+        stat[0] += 1;
+        stat[1] += 1;
+        stat[2] += 1;
+        stat[3] += 1;
+        stat[4] += 1;
+        stat[5] += 1;
+    } else if (race="10") { // Lizardfolk Bonus: Con, Wis
+        stat[5] += 2;
+        stat[3] += 1;
+    } else if (race="11") { // Orc Bonus: Str, Con, -Int
+        stat[0] += 2;
+        stat[5] += 1;
+        stat[2] -= 2;
+    } else if (race="12") { // Tabaxi Bonus: Dex, Cha
+        stat[1] += 2;
+        stat[4] += 1;
+    } else {                // Tiefling Bonus: Cha, Int
+        stat[4] += 2;
+        stat[2] += 1;
+    };
+
     // Write final stat calculations to DOM
+    document.getElementById("name-stats").innerText = "Name & Stats";
     document.getElementById("givenStrength").innerText = "Strength: " + stat[0];
     document.getElementById("givenDexterity").innerText = "Dexterity: " + stat[1];
     document.getElementById("givenConstitution").innerText = "Constitution: " + stat[5];
@@ -554,6 +599,7 @@ function genChar() {
             skillMods[i] = 5;
         };
     };
+    
     var givenAcrobatics = document.getElementById("givenAcrobatics");
     var givenAnimalHandling = document.getElementById("givenAnimalHandling");
     var givenArcana = document.getElementById("givenArcana");
@@ -573,6 +619,7 @@ function genChar() {
     var givenStealth = document.getElementById("givenStealth");
     var givenSurvival = document.getElementById("givenSurvival");
 
+    document.getElementById("your-skills").innerText = "Skills";
     givenAcrobatics.innerHTML = "Acrobatics: +" + skillMods[1];
     givenAnimalHandling.innerHTML = "Animal Handling: +" + skillMods[3];
     givenArcana.innerHTML = "Arcana: +" + skillMods[2];
