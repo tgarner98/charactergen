@@ -50,7 +50,7 @@ male[3] = new Array( // Dwarf //
     "Banrik",
     "Galron"
 );
-male[4] = new Array( // Eldarin //
+male[4] = new Array( // Eladrin //
     "Jathas",
     "Panthas",
     "Yanmil",
@@ -224,7 +224,7 @@ female[3] = new Array( // Dwarf //
     "Gwennis",
     "Lesgiel"
 );
-female[4] = new Array( // ELdarin //
+female[4] = new Array( // Eladrin //
     "Qixis",
     "Faehyssa",
     "Faegrys",
@@ -534,7 +534,7 @@ function genChar() {
         stat[4] += 1;
     } else if (race="3") { // Dwarf Bonus: Con
         stat[5] += 2;
-    } else if (race="4") { // Eldarin Bonus: Int
+    } else if (race="4") { // Eladrin Bonus: Int
         stat[2] += 1;
     } else if (race="5") { // Elf Bonus: Dex
         stat[1] += 2;
@@ -566,16 +566,7 @@ function genChar() {
         stat[2] += 1;
     };
 
-    // Write final stat calculations to DOM
-    document.getElementById("name-stats").innerText = "Name & Stats";
-    document.getElementById("givenStrength").innerText = "Strength: " + stat[0];
-    document.getElementById("givenDexterity").innerText = "Dexterity: " + stat[1];
-    document.getElementById("givenConstitution").innerText = "Constitution: " + stat[5];
-    document.getElementById("givenIntelligence").innerText = "Intelligence: " + stat[2];
-    document.getElementById("givenWisdom").innerText = "Wisdom: " + stat[3];
-    document.getElementById("givenCharisma").innerText = "Charisma: " + stat[4];
-
-    // Skills //
+    // Skill Modifiers //
     var skillMods = [
         0,
         0,
@@ -599,7 +590,17 @@ function genChar() {
             skillMods[i] = 5;
         };
     };
-    
+
+    // Write final stat calculations to DOM
+    document.getElementById("name-stats").innerText = "Name & Stats";
+    document.getElementById("givenStrength").innerText = "Strength: " + stat[0];
+    document.getElementById("givenDexterity").innerText = "Dexterity: " + stat[1];
+    document.getElementById("givenConstitution").innerText = "Constitution: " + stat[5];
+    document.getElementById("givenIntelligence").innerText = "Intelligence: " + stat[2];
+    document.getElementById("givenWisdom").innerText = "Wisdom: " + stat[3];
+    document.getElementById("givenCharisma").innerText = "Charisma: " + stat[4];
+
+    // Assigns skill modifier values to variables //
     var givenAcrobatics = document.getElementById("givenAcrobatics");
     var givenAnimalHandling = document.getElementById("givenAnimalHandling");
     var givenArcana = document.getElementById("givenArcana");
@@ -619,24 +620,142 @@ function genChar() {
     var givenStealth = document.getElementById("givenStealth");
     var givenSurvival = document.getElementById("givenSurvival");
 
+    // Writes skill modifiers to DOM //
     document.getElementById("your-skills").innerText = "Skills";
-    givenAcrobatics.innerHTML = "Acrobatics: +" + skillMods[1];
-    givenAnimalHandling.innerHTML = "Animal Handling: +" + skillMods[3];
-    givenArcana.innerHTML = "Arcana: +" + skillMods[2];
-    givenAthletics.innerHTML = "Athletics: +" + skillMods[0];
-    givenDeception.innerHTML = "Deception: +" + skillMods[5];
-    givenHistory.innerHTML = "History: +" + skillMods[2];
-    givenInsight.innerHTML = "Insight: +" + skillMods[3];
-    givenIntimidation.innerHTML = "Intimidation: +" + skillMods[5];
-    givenInvestigation.innerHTML = "Investigation: +" + skillMods[2];
-    givenMedicine.innerHTML = "Medicine: +" + skillMods[3];
-    givenNature.innerHTML = "Nature: +" + skillMods[2];
-    givenPerception.innerHTML = "Perception: +" + skillMods[3];
-    givenPerformance.innerHTML = "Performance: +" + skillMods[5];
-    givenPersuasion.innerHTML = "Persuasion: +" + skillMods[5];
-    givenReligion.innerHTML = "Religion: +" + skillMods[2];
-    givenSleightOfHand.innerHTML = "Sleight of Hand: +" + skillMods[1];
-    givenStealth.innerHTML = "Stealth: +" + skillMods[1];
-    givenSurvival.innerHTML = "Survival: +" + skillMods[3];
+    givenAcrobatics.innerHTML = "Acrobatics: +" + skillMods[1] + " (Dex)";
+    givenAnimalHandling.innerHTML = "Animal Handling: +" + skillMods[3] + " (Wis)";
+    givenArcana.innerHTML = "Arcana: +" + skillMods[2] + " (Int)";
+    givenAthletics.innerHTML = "Athletics: +" + skillMods[0] + " (Str)";
+    givenDeception.innerHTML = "Deception: +" + skillMods[5] + " (Cha)";
+    givenHistory.innerHTML = "History: +" + skillMods[2] + " (Int)";
+    givenInsight.innerHTML = "Insight: +" + skillMods[3] + " (Wis)";
+    givenIntimidation.innerHTML = "Intimidation: +" + skillMods[5] + " (Cha)";
+    givenInvestigation.innerHTML = "Investigation: +" + skillMods[2] + " (Int)";
+    givenMedicine.innerHTML = "Medicine: +" + skillMods[3] + " (Wis)";
+    givenNature.innerHTML = "Nature: +" + skillMods[2] + " (Int)";
+    givenPerception.innerHTML = "Perception: +" + skillMods[3] + " (Wis)";
+    givenPerformance.innerHTML = "Performance: +" + skillMods[5] + " (Cha)";
+    givenPersuasion.innerHTML = "Persuasion: +" + skillMods[5] + " (Cha)";
+    givenReligion.innerHTML = "Religion: +" + skillMods[2] + " (Int)";
+    givenSleightOfHand.innerHTML = "Sleight of Hand: +" + skillMods[1] + " (Dex)";
+    givenStealth.innerHTML = "Stealth: +" + skillMods[1] + " (Dex)";
+    givenSurvival.innerHTML = "Survival: +" + skillMods[3] + " (Wis)";
 
+    // Proficieny bonus determined by level selected //
+    document.getElementById("your-prof").innerText = "Proficiency";
+    var charLevel = document.getElementById("charLevel").value;
+    if (charLevel == 0 || charLevel == 1 || charLevel == 2 || charLevel == 3 || charLevel == 4) {
+        document.getElementById("givenProf").innerHTML = "Proficieny Bonus +" + 2;
+    } else if (charLevel == 5 || charLevel == 6 || charLevel == 7 || charLevel == 8) {
+        document.getElementById("givenProf").innerHTML = "Proficieny Bonus +" + 3;
+    } else if (charLevel == 9 || charLevel == 10 || charLevel == 11 || charLevel == 12) {
+        document.getElementById("givenProf").innerHTML = "Proficieny Bonus +" + 4;
+    } else if (charLevel == 13 || charLevel == 14 || charLevel == 15 || charLevel == 16) {
+        document.getElementById("givenProf").innerHTML = "Proficieny Bonus +" + 5;
+    } else if (charLevel == 17 || charLevel == 18 || charLevel == 19 || charLevel == 20) {
+        document.getElementById("givenProf").innerHTML = "Proficieny Bonus +" + 6;
+    }
+    // Proficient skills determined by class selected //
+    if (charClass == 0) { // Barbarian //
+        document.getElementById("prof-skill-h").innerText = "Choose two skills below then add proficiency bonus to skill modifiers";
+        document.getElementById("prof-skill1").innerText = "Animal Handling +" + skillMods[3];
+        document.getElementById("prof-skill2").innerText = "Athletics +" + skillMods[0];
+        document.getElementById("prof-skill3").innerText = "Intimidation +" + skillMods[5];
+        document.getElementById("prof-skill4").innerText = "Nature +" + skillMods[2];
+        document.getElementById("prof-skill5").innerText = "Perception +" + skillMods[3];
+        document.getElementById("prof-skill6").innerText = "Survival +" + skillMods[3];
+    } else if (charClass == 1) { // Bard //
+        document.getElementById("prof-skill-h").innerText = "Choose any three skills then add proficiency bonus to skill modifiers";
+    } else if (charClass == 2) { // Cleric //
+        document.getElementById("prof-skill-h").innerText = "Choose two skills below then add proficiency bonus to skill modifiers";
+        document.getElementById("prof-skill1").innerText = "History: +" + skillMods[2];
+        document.getElementById("prof-skill2").innerText = "Insight: +" + skillMods[3];
+        document.getElementById("prof-skill3").innerText = "Medicine: +" + skillMods[3];
+        document.getElementById("prof-skill4").innerText = "Persuasion: +" + skillMods[5];
+        document.getElementById("prof-skill5").innerText = "Religion: +" + skillMods[2];
+    } else if (charClass == 3) { // Druid //
+        document.getElementById("prof-skill-h").innerText = "Choose two skills below then add proficiency bonus to skill modifiers";
+        document.getElementById("prof-skill1").innerText = "Arcana: +" + skillMods[2];
+        document.getElementById("prof-skill2").innerText = "Animal Handling: +" + skillMods[3];
+        document.getElementById("prof-skill3").innerText = "Insight: +" + skillMods[3];
+        document.getElementById("prof-skill4").innerText = "Medicine: +" + skillMods[3];
+        document.getElementById("prof-skill5").innerText = "Nature: +" + skillMods[2];
+        document.getElementById("prof-skill6").innerText = "Perception: +" + skillMods[3];
+        document.getElementById("prof-skill7").innerText = "Religion: +" + skillMods[2];
+        document.getElementById("prof-skill8").innerText = "Survival: +" + skillMods[3];
+    } else if (charClass == 4) { // Fighter //
+        document.getElementById("prof-skill-h").innerText = "Choose two skills below then add proficiency bonus to skill modifiers";
+        document.getElementById("prof-skill1").innerText = "Acrobatics: +" + skillMods[1];
+        document.getElementById("prof-skill2").innerText = "Animal Handling: +" + skillMods[3];
+        document.getElementById("prof-skill3").innerText = "Athletics: +" + skillMods[0];
+        document.getElementById("prof-skill4").innerText = "History: +" + skillMods[2];
+        document.getElementById("prof-skill5").innerText = "Insight: +" + skillMods[3];
+        document.getElementById("prof-skill6").innerText = "Intimidation: +" + skillMods[5];
+        document.getElementById("prof-skill7").innerText = "Perception: +" + skillMods[3];
+        document.getElementById("prof-skill8").innerText = "Survival: +" + skillMods[3];
+    } else if (charClass == 5) { // Monk //
+        document.getElementById("prof-skill-h").innerText = "Choose two skills below then add proficiency bonus to skill modifiers";
+        document.getElementById("prof-skill1").innerText = "Acrobatics: +" + skillMods[1];
+        document.getElementById("prof-skill2").innerText = "Athletics: +" + skillMods[0];
+        document.getElementById("prof-skill3").innerText = "History: +" + skillMods[2];
+        document.getElementById("prof-skill4").innerText = "Insight: +" + skillMods[3];
+        document.getElementById("prof-skill5").innerText = "Religion: +" + skillMods[2];
+        document.getElementById("prof-skill6").innerText = "Stealth: +" + skillMods[1];
+    } else if (charClass == 6) { // Paladin //
+        document.getElementById("prof-skill-h").innerText = "Choose two skills below then add proficiency bonus to skill modifiers";
+        document.getElementById("prof-skill1").innerText = "Athletics: +" + skillMods[0];
+        document.getElementById("prof-skill2").innerText = "Insight: +" + skillMods[3];
+        document.getElementById("prof-skill3").innerText = "Intimidation: +" + skillMods[5];
+        document.getElementById("prof-skill4").innerText = "Medicine: +" + skillMods[3];
+        document.getElementById("prof-skill5").innerText = "Persuasion: +" + skillMods[5]; 
+        document.getElementById("prof-skill6").innerText = "Religion: +" + skillMods[2];
+    } else if (charClass == 7) { // Ranger //
+        document.getElementById("prof-skill-h").innerText = "Choose two skills below then add proficiency bonus to skill modifiers";
+        document.getElementById("prof-skill1").innerText = "Animal Handling: +" + skillMods[3];
+        document.getElementById("prof-skill2").innerText = "Athletics: +" + skillMods[0];
+        document.getElementById("prof-skill3").innerText = "Insight: +" + skillMods[3];
+        document.getElementById("prof-skill4").innerText = "Investigation: +" + skillMods[2];
+        document.getElementById("prof-skill5").innerText = "Nature: +" + skillMods[2];
+        document.getElementById("prof-skill6").innerText = "Perception: +" + skillMods[3];
+        document.getElementById("prof-skill7").innerText = "Stealth: +" + skillMods[1];
+        document.getElementById("prof-skill8").innerText = "Survival: +" + skillMods[3];
+    } else if (charClass == 8) { // Rogue //
+        document.getElementById("prof-skill-h").innerText = "Choose four skills below then add proficiency bonus to skill modifiers";
+        document.getElementById("prof-skill1").innerText = "Acrobatics: +" + skillMods[1];
+        document.getElementById("prof-skill2").innerText = "Athletics: +" + skillMods[0];
+        document.getElementById("prof-skill3").innerText = "Deception: +" + skillMods[5];
+        document.getElementById("prof-skill4").innerText = "Insight: +" + skillMods[3];
+        document.getElementById("prof-skill5").innerText = "Intimidation: +" + skillMods[5];
+        document.getElementById("prof-skill6").innerText = "Investigation: +" + skillMods[2]; 
+        document.getElementById("prof-skill7").innerText = "Perception: +" + skillMods[3];
+        document.getElementById("prof-skill8").innerText = "Performance: +" + skillMods[5];
+        document.getElementById("prof-skill9").innerText = "Persuasion: +" + skillMods[5];
+        document.getElementById("prof-skill10").innerText = "Sleight of Hand: +" + skillMods[1];
+        document.getElementById("prof-skill11").innerText = "Stealth: +" + skillMods[1];
+    } else if (charClass == 9) { // Sorcerer //
+        document.getElementById("prof-skill-h").innerText = "Choose two skills below then add proficiency bonus to skill modifiers";
+        document.getElementById("prof-skill1").innerText = "Arcana: +" + skillMods[2];
+        document.getElementById("prof-skill2").innerText = "Deception: +" + skillMods[5];
+        document.getElementById("prof-skill3").innerText = "Insight: +" + skillMods[3];
+        document.getElementById("prof-skill4").innerText = "Intimidation: +" + skillMods[5];
+        document.getElementById("prof-skill5").innerText = "Persuasion: +" + skillMods[5];
+        document.getElementById("prof-skill6").innerText = "Religion: +" + skillMods[2];
+    } else if (charClass == 10) { // Warlock //
+        document.getElementById("prof-skill-h").innerText = "Choose two skills below then add proficiency bonus to skill modifiers";
+        document.getElementById("prof-skill1").innerText = "Arcana: +" + skillMods[2];
+        document.getElementById("prof-skill2").innerText = "Deception: +" + skillMods[5];
+        document.getElementById("prof-skill3").innerText = "History: +" + skillMods[2];
+        document.getElementById("prof-skill4").innerText = "Intimidation: +" + skillMods[5];
+        document.getElementById("prof-skill5").innerText = "Investigation: +" + skillMods[2];
+        document.getElementById("prof-skill6").innerText = "Nature: +" + skillMods[2]; 
+        document.getElementById("prof-skill7").innerText = "Religion: +" + skillMods[2];
+    } else if (charClass == 11) { // Wizard //
+        document.getElementById("prof-skill-h").innerText = "Choose two skills below then add proficiency bonus to skill modifiers";
+        document.getElementById("prof-skill1").innerText = "Arcana: +" + skillMods[2];
+        document.getElementById("prof-skill2").innerText = "History: +" + skillMods[2];
+        document.getElementById("prof-skill3").innerText = "Insight: +" + skillMods[3];
+        document.getElementById("prof-skill4").innerText = "Investigation: +" + skillMods[2];
+        document.getElementById("prof-skill5").innerText = "Medicine: +" + skillMods[3];
+        document.getElementById("prof-skill6").innerText = "Religion: +" + skillMods[2];
+    }
 };
